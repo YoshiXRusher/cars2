@@ -15,7 +15,7 @@ class HomeController extends AbstractController
     {
 
         $carbu = $repo->findAll();
-        dd($carbu);
+        dd(rand(0,count($carbu)));
 
         return $this->render('home.html.twig',[
 

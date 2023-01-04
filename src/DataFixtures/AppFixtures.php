@@ -86,10 +86,9 @@ class AppFixtures extends Fixture
         // $typecarbu = $typecarbus[];
         $date = new DateTimeImmutable();
         $car = new Cars();
-        $carburan = $carburant[random_int(0,count($carburant)-1)];
-        dump($carburan);
+        $nbCarbu = count($carburant);
         $car->setIdModele($modele)
-            ->setIdCarbu($carburan)
+            ->setIdCarbu($carburant(rand(0,count($typecarbus)-1)))
             ->setIdTransmi($transmi)
             ->setIdTypeDeBoite($boite)
             ->setPrice(random_int(3000,20000))
