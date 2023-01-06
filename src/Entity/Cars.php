@@ -23,16 +23,16 @@ class Cars
     private ?int $price = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $nb_proprio = null;
+    private ?int $nbproprio = null;
 
     #[ORM\Column]
     private ?int $cylindree = null;
 
     #[ORM\Column]
-    private ?int $puissance_ch = null;
+    private ?int $puissancech = null;
 
     #[ORM\Column]
-    private ?int $puissance_kw = null;
+    private ?int $puissancekw = null;
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     private ?\DateTimeImmutable $year = null;
@@ -41,22 +41,19 @@ class Cars
     private ?string $description = null;
 
     #[ORM\ManyToOne(inversedBy: 'cars')]
-    private ?Modele $id_modele = null;
+    private ?Modele $modele = null;
 
     #[ORM\ManyToOne(inversedBy: 'cars')]
-    private ?Carburant $id_carbu = null;
+    private ?Carburant $carbu = null;
 
     #[ORM\ManyToOne(inversedBy: 'cars')]
-    private ?Transmission $id_transmi = null;
+    private ?Transmission $transmi = null;
 
     #[ORM\ManyToMany(targetEntity: Images::class, mappedBy: 'id_cars')]
     private Collection $images;
 
     #[ORM\ManyToOne(inversedBy: 'cars')]
-    private ?TypeDeBoite $idTypeDeBoite = null;
-
-    #[ORM\ManyToOne(inversedBy: 'cars')]
-    private ?Marque $idMarque = null;
+    private ?TypeDeBoite $typedeboite = null;
 
     public function __construct()
     {
@@ -94,12 +91,12 @@ class Cars
 
     public function getNbProprio(): ?int
     {
-        return $this->nb_proprio;
+        return $this->nbproprio;
     }
 
-    public function setNbProprio(int $nb_proprio): self
+    public function setNbProprio(int $nbproprio): self
     {
-        $this->nb_proprio = $nb_proprio;
+        $this->nbproprio = $nbproprio;
 
         return $this;
     }
@@ -118,24 +115,24 @@ class Cars
 
     public function getPuissanceCh(): ?int
     {
-        return $this->puissance_ch;
+        return $this->puissancech;
     }
 
-    public function setPuissanceCh(int $puissance_ch): self
+    public function setPuissanceCh(int $puissancech): self
     {
-        $this->puissance_ch = $puissance_ch;
+        $this->puissancech = $puissancech;
 
         return $this;
     }
 
     public function getPuissanceKw(): ?int
     {
-        return $this->puissance_kw;
+        return $this->puissancekw;
     }
 
-    public function setPuissanceKw(int $puissance_kw): self
+    public function setPuissanceKw(int $puissancekw): self
     {
-        $this->puissance_kw = $puissance_kw;
+        $this->puissancekw = $puissancekw;
 
         return $this;
     }
@@ -166,36 +163,36 @@ class Cars
 
     public function getIdModele(): ?Modele
     {
-        return $this->id_modele;
+        return $this->modele;
     }
 
-    public function setIdModele(?Modele $id_modele): self
+    public function setIdModele(?Modele $modele): self
     {
-        $this->id_modele = $id_modele;
+        $this->modele = $modele;
 
         return $this;
     }
 
     public function getIdCarbu(): ?Carburant
     {
-        return $this->id_carbu;
+        return $this->carbu;
     }
 
-    public function setIdCarbu(?Carburant $id_carbu): self
+    public function setIdCarbu(?Carburant $carbu): self
     {
-        $this->id_carbu = $id_carbu;
+        $this->carbu = $carbu;
 
         return $this;
     }
 
     public function getIdTransmi(): ?Transmission
     {
-        return $this->id_transmi;
+        return $this->transmi;
     }
 
-    public function setIdTransmi(?Transmission $id_transmi): self
+    public function setIdTransmi(?Transmission $transmi): self
     {
-        $this->id_transmi = $id_transmi;
+        $this->transmi = $transmi;
 
         return $this;
     }
@@ -229,25 +226,14 @@ class Cars
 
     public function getIdTypeDeBoite(): ?TypeDeBoite
     {
-        return $this->idTypeDeBoite;
+        return $this->typedeboite;
     }
 
-    public function setIdTypeDeBoite(?TypeDeBoite $idTypeDeBoite): self
+    public function setIdTypeDeBoite(?TypeDeBoite $typedeboite): self
     {
-        $this->idTypeDeBoite = $idTypeDeBoite;
+        $this->typedeboite = $typedeboite;
 
         return $this;
     }
 
-    public function getIdMarque(): ?Marque
-    {
-        return $this->idMarque;
-    }
-
-    public function setIdMarque(?Marque $idMarque): self
-    {
-        $this->idMarque = $idMarque;
-
-        return $this;
-    }
 }

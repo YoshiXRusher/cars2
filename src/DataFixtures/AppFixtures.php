@@ -11,9 +11,9 @@ use DateTimeImmutable;
 use App\Entity\Carburant;
 use App\Entity\TypeDeBoite;
 use App\Entity\Transmission;
+use App\Repository\ModeleRepository;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Symfony\Component\Validator\Constraints\Date;
 
 class AppFixtures extends Fixture
 {
@@ -22,19 +22,21 @@ class AppFixtures extends Fixture
         // DEBUT de la gestion des marque et model lier par id 
             $jsonobj = file_get_contents($filname = "public/resource/listeVoiture.json");
             $arr = json_decode($jsonobj, true);
+            $tabModel = [];
 
             foreach($arr as $name) {
                 $marque = new Marque();
                 $marquejson = $name["marque"];
                 $marque->setName($marquejson);
                 foreach($name["modeles"] as $name2) {
-                    // $year = $name2["annee"];
-                    $models = $name2["model"];
                     $modele = new Modele();
+                    $models = $name2["model"];
+                    $year = $name2["annee"];
                     $modele->setName($models)
-                            ->setMarque($marque);
-                            // ->setYear($year)
+                            ->setMarque($marque)
+                            ->setYearModele($year);
                     $manager->persist($modele);
+                    $tabModel[] = $modele;
                 }
                 $manager->persist($marque);
             }
@@ -44,11 +46,13 @@ class AppFixtures extends Fixture
         // DEBUT de la gestion des transmission
         
         $typeTransmis = ["Avant", "arrière", "4X4"];
+        $tabTransmi = [];
 
         for ($i=0; $i <= 2; $i++) { 
             $transmi = new Transmission();
             $transmi->setType($typeTransmis[$i]);
             $manager->persist($transmi);
+            $tabTransmi[] = $transmi;
         }
         
         // FIN de la gestion des transmission
@@ -56,11 +60,13 @@ class AppFixtures extends Fixture
         // DEBUT de la gestion des type de boite
         
         $typeBoites = ["manuelle", "automatique"];
+        $tabBoites = [];
 
         for ($i=0; $i <= 1; $i++) { 
             $boite = new TypeDeBoite();
             $boite->setType($typeBoites[$i]);
             $manager->persist($boite);
+            $tabBoites[] = $boite;
         }
 
         // FIN de la gestion des type de boite
@@ -68,46 +74,45 @@ class AppFixtures extends Fixture
         // DEBUT de la gestion des carburant
         
             $typecarbus = ["electrique", "essence", "diesel", "Hybrid"];
-
+            $tabCarbu = [];
 
             for ($i=0; $i <= 3; $i++) { 
                 $carburant = new Carburant();
                 $carburant->setType($typecarbus[$i]);
                 $manager->persist($carburant);
+                $tabCarbu[] = $carburant;
             }
-
+            $manager->flush();
+            
         // FIN de la gestion des carburant
 
-        
         // DEBUT de la gestion d'une voiture en vente 
-        // $model = $models[];
-        // $typeBoite = $typeBoites[];
-        // $typeTransmi = $typeTransmis[];
-        // $typecarbu = $typecarbus[];
-        $date = new DateTimeImmutable();
-        $car = new Cars();
-        $nbCarbu = count($carburant);
-        $car->setIdModele($modele)
-            ->setIdCarbu($carburant(rand(0,count($typecarbus)-1)))
-            ->setIdTransmi($transmi)
-            ->setIdTypeDeBoite($boite)
-            ->setPrice(random_int(3000,20000))
-            ->setCylindree(random_int(800,3000))
-            ->setPuissanceCh(random_int(800,3000))
-            ->setPuissanceKw(random_int(30,300))
-            ->setKilometrage(random_int(5000,300000))
-            ->setNbProprio(random_int(1,5))
-            ->setYear($date)
-            ->setDescription(
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit nisi a quod corporis, doloribus quam possimus quas nesciunt architecto ipsum.'
-                )
-            ->setidMarque($marque);
 
-        $manager->persist($car);
+        // $mod = $tabModel[rand(0, count($tabModel)-1)];
 
-        
+        for ($i=0; $i < 5; $i++) { 
+            $randModel = $tabModel[rand(0, count($tabModel)-1)];
+            $date = new DateTimeImmutable();
+            $car = new Cars();
+            $car->setIdModele($randModel)
+                ->setIdCarbu($tabCarbu[rand(0, count($tabCarbu)-1)])
+                ->setIdTransmi($tabTransmi[rand(0, count($tabTransmi)-1)])
+                ->setIdTypeDeBoite($tabBoites[rand(0, count($tabBoites)-1)])
+                ->setPrice(rand(3000,20000))
+                ->setCylindree(rand(800,3000))
+                ->setPuissanceCh(rand(40,600))
+                ->setPuissanceKw(rand(30,300))
+                ->setKilometrage(rand(5000,300000))
+                ->setNbProprio(rand(1,6))
+                ->setYear($date)
+                ->setDescription(
+                    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit nisi a quod corporis, doloribus quam possimus quas nesciunt architecto ipsum.'
+                );
+                    
+                $manager->persist($car);
+        }
+                
         // FIN de la gestion d'une voiture en vente
-
 
         $manager->flush();
     }

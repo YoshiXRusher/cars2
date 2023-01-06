@@ -39,9 +39,27 @@ class ModeleRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Modele[] Returns an array of Modele objects
-//     */
+    /**
+     * return la marque lier au modele et a l'année de la voiture 
+     *
+     * @param [type] $modele
+     * @param [type] $year
+     * @return string
+     */
+    public function findmarque($modele/*, $year*/): string
+    {
+        return $this->createQueryBuilder(`
+            SELECT 'marque'.'name'
+            FROM 'modele'
+                INNER JOIN 'marque' ON 'modele'.'marque_id' = 'marque'.'id'
+            WHERE modele.name = :modele and modele.year_modele = :year;`
+            )
+            ->setParameter('modele', $modele)
+            // ->setParameter('year', $year)
+            ->getQuery()
+            ->getResult();
+
+    }
 //    public function findByExampleField($value): array
 //    {
 //        return $this->createQueryBuilder('m')

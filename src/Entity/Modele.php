@@ -24,6 +24,9 @@ class Modele
     #[ORM\OneToMany(mappedBy: 'id_modele', targetEntity: Cars::class)]
     private Collection $cars;
 
+    #[ORM\Column]
+    private ?int $yearModele = null;
+
     public function __construct()
     {
         $this->cars = new ArrayCollection();
@@ -84,6 +87,18 @@ class Modele
                 $car->setIdModele(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getYearModele(): ?int
+    {
+        return $this->yearModele;
+    }
+
+    public function setYearModele(int $yearModele): self
+    {
+        $this->yearModele = $yearModele;
 
         return $this;
     }

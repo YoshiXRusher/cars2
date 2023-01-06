@@ -13,10 +13,13 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body>
+    <body class ='bg-dark'>
+        {% include "partials/header.html.twig" %}
+
         {% block body %}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit nisi a quod corporis, doloribus quam possimus quas nesciunt architecto ipsum.
-        
+            
         {% endblock %}
+        {% include "partials/footer.html.twig" %}
+
     </body>
 </html>
