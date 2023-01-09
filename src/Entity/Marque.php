@@ -77,33 +77,4 @@ class Marque
         return $this;
     }
 
-    /**
-     * @return Collection<int, Cars>
-     */
-    public function getCars(): Collection
-    {
-        return $this->cars;
-    }
-
-    public function addCar(Cars $car): self
-    {
-        if (!$this->cars->contains($car)) {
-            $this->cars->add($car);
-            $car->setIdMarque($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCar(Cars $car): self
-    {
-        if ($this->cars->removeElement($car)) {
-            // set the owning side to null (unless already changed)
-            if ($car->getIdMarque() === $this) {
-                $car->setIdMarque(null);
-            }
-        }
-
-        return $this;
-    }
 }

@@ -3,54 +3,27 @@
 {% block title %}ShowRoom{% endblock %}
 
 {% block body %}
-    <div class="container">
-    {% for cars in car %}
-        <p>id {{cars.id}}</p>
-        <p>kilometrage {{cars.kilometrage}} KM</p>
-        <p>nbproprio {{cars.nbproprio}}</p>
-        <p>price {{cars.price}} €</p>
-        <p>cylindree {{cars.cylindree}} cm3</p>
-        <p>puissancech {{cars.puissancech}} CH</p>
-        <p>puissancekw {{cars.puissancekw}} KW</p>
-        <p>date {{cars.year | date('d/m/y')}}</p>
-        <p>modele {{cars.idModele.name}} </p>
-        <p>marque {{cars.idModele.marque.name}} </p>
-        <p>carbu {{cars.idCarbu.type}} </p>
-        <p>transmi {{cars.idTransmi.type}} </p> 
-        <p>typedeboite {{cars.idTypedeboite.type}} </p>
-        <p>IMG {{cars.images.isDirty}} </p>
-        <p><pre>
-            {{ dump(cars) }}
-        </pre></p>
-        
-    {% endfor %}
-    {# <div class="row">
-            <div class="col-md-4">
-                {% for i in 0..3 %}
-                    <div class="card mb-3">
-                        <h3 class="card-header">{{}}</h3>
-                        <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-                        </div>
-                        <div class="container">
-                            <img src="https://via.placeholder.com/400" class="d-block w-100" alt="">
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                                content.</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Cras justo odio</li>
-                            <li class="list-group-item">Dapibus ac facilisis in</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                        </ul>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Card link</a>
-                        </div>
+    <div class="test">
+        <div class="containerCarte">
+            {% for cars in car %}
+                <div class="carte mt-5">
+                    <div class="titre">
+                        <span>{{cars.idModele.marque.name}} {{cars.idModele.name}}</span>
                     </div>
-                {% endfor %}
-            </div>
-        </div> #}
+                    <img src="{{cars.cover}}" alt="" srcset="">
+                    <div class="info">
+                        <span>Kilometrage {{cars.kilometrage}} KM</span>
+                        <span>{{cars.nbproprio}} Propriétaires préc.</span>
+                    </div>
+                    <div class="info">
+                        <span>Prix {{cars.price}} €</span>
+                        <span>Date {{cars.year | date('d/m/y')}}</span>
+                    </div>
+                    <div class="btn mt-4">
+                        <a href="{{path('info',{'id': cars.id})}}">Plus d'info</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

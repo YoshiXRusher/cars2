@@ -9,9 +9,10 @@ use App\Entity\Marque;
 use App\Entity\Modele;
 use DateTimeImmutable;
 use App\Entity\Carburant;
+use App\Entity\Cover;
+use App\Entity\Images;
 use App\Entity\TypeDeBoite;
 use App\Entity\Transmission;
-use App\Repository\ModeleRepository;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -86,13 +87,27 @@ class AppFixtures extends Fixture
             
         // FIN de la gestion des carburant
 
-        // DEBUT de la gestion d'une voiture en vente 
+        // DEBUT de la gestion images
 
-        // $mod = $tabModel[rand(0, count($tabModel)-1)];
+        $images = 'https://placehold.jp/150x150.png';
+        $tabImage = [];
+        for ($i=0; $i <= 3; $i++) { 
+            $image = new Images();
+            $image->setUrl($images);
+            $manager->persist($image);
+            $tabImage[] = $image;
+        }
+
+        $manager->flush();
+
+        // FIN de la gestion images
+     
+        // DEBUT de la gestion d'une voiture en vente 
 
         for ($i=0; $i < 5; $i++) { 
             $randModel = $tabModel[rand(0, count($tabModel)-1)];
             $date = new DateTimeImmutable();
+            $cover = 'https://placehold.jp/250x250.png';
             $car = new Cars();
             $car->setIdModele($randModel)
                 ->setIdCarbu($tabCarbu[rand(0, count($tabCarbu)-1)])
@@ -107,8 +122,10 @@ class AppFixtures extends Fixture
                 ->setYear($date)
                 ->setDescription(
                     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit nisi a quod corporis, doloribus quam possimus quas nesciunt architecto ipsum.'
-                );
-                    
+                )
+                ->addImage($tabImage[rand(0,count($tabImage)-1)])
+                ->addImage($tabImage[rand(0,count($tabImage)-1)])
+                ->setCover($cover);
                 $manager->persist($car);
         }
                 

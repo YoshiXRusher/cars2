@@ -55,6 +55,9 @@ class Cars
     #[ORM\ManyToOne(inversedBy: 'cars')]
     private ?TypeDeBoite $typedeboite = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $cover = null;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -232,6 +235,18 @@ class Cars
     public function setIdTypeDeBoite(?TypeDeBoite $typedeboite): self
     {
         $this->typedeboite = $typedeboite;
+
+        return $this;
+    }
+
+    public function getCover(): ?string
+    {
+        return $this->cover;
+    }
+
+    public function setCover(string $cover): self
+    {
+        $this->cover = $cover;
 
         return $this;
     }

@@ -1,3 +1,67 @@
 .full{
     min-height: 80vh;
+    color: #f1f1f1;
+}
+
+.test{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerCarte{
+    width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    /* gap: 15px; */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.carte{
+    width: 500px;
+    height: 400px;
+    display: flex;
+    /* border: 1px solid white; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    color: #f1f1f1;
+    box-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.titre{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.carte .info{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn a{
+    text-decoration: none;
+    color: #f1f1f1;
+}
+
+.carousel{
+    width: 500px;
+    height: 300px;
+}
+
+.carousel-inner , .carousel-item{
+    width: 100%;
+    height: 100%;
+}
+.carousel-item img{
+    object-fit: cover;
 }
