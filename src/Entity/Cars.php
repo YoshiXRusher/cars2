@@ -247,7 +247,6 @@ class Cars
     public function setCover(string $cover): self
     {
         $this->cover = $cover;
-
         return $this;
     }
 
