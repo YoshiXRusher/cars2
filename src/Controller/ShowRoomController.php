@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Cars;
+use App\Entity\Equipement;
+use App\Entity\Images;
 use App\Form\AddcarType;
 use App\Repository\CarsRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -68,13 +70,24 @@ class ShowRoomController extends AbstractController
         
         $form = $this->createForm(AddcarType::class, $car);
         $form->handleRequest($request);
+        
         if ($form->isSubmitted()) {
-            dd($form);
+            // test pour ajouter les equipement (a revoir)
+            // $equipements = $form->getData()->getEquipements();
+            // for ($e=0; $e <= count($equipements); $e++) {
+            //     $equipement = $equipements[$e];
+            //     dd($equipement);
+            //     foreach ($equipement['name'] as $opt) {
+            //         dd($opt);
+            //     }
+            // }
+            $image = $form->get('Image')->getData();
+            $img = new Images();
+            $img->setUrl($image);
+            $car->addImage($img);
             $manager->persist($car);
             $manager->flush();
         }
-
-
 
         return $this->render('addcar/addcar.html.twig', [
             'myform' => $form->createView()

@@ -49,9 +49,6 @@ class Cars
     #[ORM\ManyToOne(inversedBy: 'cars')]
     private ?Transmission $transmi = null;
 
-    #[ORM\ManyToMany(targetEntity: Images::class, mappedBy: 'id_cars')]
-    private Collection $images;
-
     #[ORM\ManyToOne(inversedBy: 'cars')]
     private ?TypeDeBoite $typedeboite = null;
 
@@ -60,6 +57,9 @@ class Cars
 
     #[ORM\ManyToMany(targetEntity: Equipement::class, mappedBy: 'cars')]
     private Collection $equipements;
+
+    #[ORM\OneToMany(mappedBy: 'car', targetEntity: Images::class, cascade: ['persist'])]
+    private Collection $images;
 
     public function __construct()
     {
@@ -204,32 +204,6 @@ class Cars
         return $this;
     }
 
-    /**
-     * @return Collection<int, Images>
-     */
-    public function getImages(): Collection
-    {
-        return $this->images;
-    }
-
-    public function addImage(Images $image): self
-    {
-        if (!$this->images->contains($image)) {
-            $this->images->add($image);
-            $image->addIdCar($this);
-        }
-
-        return $this;
-    }
-
-    public function removeImage(Images $image): self
-    {
-        if ($this->images->removeElement($image)) {
-            $image->removeIdCar($this);
-        }
-
-        return $this;
-    }
 
     public function getIdTypeDeBoite(): ?TypeDeBoite
     {
@@ -276,6 +250,36 @@ class Cars
     {
         if ($this->equipements->removeElement($equipement)) {
             $equipement->removeCar($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Images>
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Images $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images->add($image);
+            $image->setCar($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Images $image): self
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getCar() === $this) {
+                $image->setCar(null);
+            }
         }
 
         return $this;

@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\ImagesRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ImagesRepository::class)]
@@ -16,15 +14,10 @@ class Images
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $url = null;
+    private ?string $Url = null;
 
-    #[ORM\ManyToMany(targetEntity: Cars::class, inversedBy: 'images')]
-    private Collection $id_cars;
-
-    public function __construct()
-    {
-        $this->id_cars = new ArrayCollection();
-    }
+    #[ORM\ManyToOne(inversedBy: 'images')]
+    private ?Cars $car = null;
 
     public function getId(): ?int
     {
@@ -33,36 +26,24 @@ class Images
 
     public function getUrl(): ?string
     {
-        return $this->url;
+        return $this->Url;
     }
 
-    public function setUrl(string $url): self
+    public function setUrl(string $Url): self
     {
-        $this->url = $url;
+        $this->Url = $Url;
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, Cars>
-     */
-    public function getIdCars(): Collection
+    public function getCar(): ?Cars
     {
-        return $this->id_cars;
+        return $this->car;
     }
 
-    public function addIdCar(Cars $idCar): self
+    public function setCar(?Cars $car): self
     {
-        if (!$this->id_cars->contains($idCar)) {
-            $this->id_cars->add($idCar);
-        }
-
-        return $this;
-    }
-
-    public function removeIdCar(Cars $idCar): self
-    {
-        $this->id_cars->removeElement($idCar);
+        $this->car = $car;
 
         return $this;
     }
