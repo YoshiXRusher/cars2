@@ -27,6 +27,10 @@ class Modele
     #[ORM\Column]
     private ?int $yearModele = null;
 
+    public function __toString() {
+        return $this->name;
+    }
+
     public function __construct()
     {
         $this->cars = new ArrayCollection();

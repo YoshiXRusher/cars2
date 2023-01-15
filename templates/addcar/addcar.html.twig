@@ -8,12 +8,14 @@
 <section class="container my-3">
     <div class="row">
         <div class="col">
-                <div class="container">
-                    <div>
-                        {{form_widget(form.kilometrage)}}
-                    </div>
+            {{form_start(myform)}}
+            <div class="container">
+                <div>
+                    {{form_widget(myform)}}
                 </div>
-                <button type="submit" class="btn btn-lg mt-4">Création d'une annonce</button>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Création d'une annonce</button>
+            {{form_end(myform)}}
         </div>
     </div>
 </section>

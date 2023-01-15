@@ -21,6 +21,10 @@ class Equipement
     #[ORM\ManyToMany(targetEntity: Cars::class, inversedBy: 'equipements')]
     private Collection $cars;
 
+    public function __toString() {
+        return $this->name;
+    }
+
     public function __construct()
     {
         $this->cars = new ArrayCollection();

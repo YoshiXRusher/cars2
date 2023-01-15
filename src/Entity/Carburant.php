@@ -21,6 +21,10 @@ class Carburant
     #[ORM\OneToMany(mappedBy: 'id_carbu', targetEntity: Cars::class)]
     private Collection $cars;
 
+    public function __toString() {
+        return $this->type;
+    }
+
     public function __construct()
     {
         $this->cars = new ArrayCollection();
