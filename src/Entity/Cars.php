@@ -58,9 +58,13 @@ class Cars
     #[ORM\Column(length: 255)]
     private ?string $cover = null;
 
+    #[ORM\ManyToMany(targetEntity: Equipement::class, mappedBy: 'cars')]
+    private Collection $equipements;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->equipements = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -247,6 +251,33 @@ class Cars
     public function setCover(string $cover): self
     {
         $this->cover = $cover;
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Equipement>
+     */
+    public function getEquipements(): Collection
+    {
+        return $this->equipements;
+    }
+
+    public function addEquipement(Equipement $equipement): self
+    {
+        if (!$this->equipements->contains($equipement)) {
+            $this->equipements->add($equipement);
+            $equipement->addCar($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEquipement(Equipement $equipement): self
+    {
+        if ($this->equipements->removeElement($equipement)) {
+            $equipement->removeCar($this);
+        }
+
         return $this;
     }
 

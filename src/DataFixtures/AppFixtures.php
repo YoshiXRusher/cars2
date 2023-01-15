@@ -5,21 +5,47 @@
 namespace App\DataFixtures;
 
 use App\Entity\Cars;
+use App\Entity\Users;
+use App\Entity\Images;
 use App\Entity\Marque;
 use App\Entity\Modele;
 use DateTimeImmutable;
 use App\Entity\Carburant;
-use App\Entity\Cover;
-use App\Entity\Images;
+use App\Entity\Equipement;
 use App\Entity\TypeDeBoite;
 use App\Entity\Transmission;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
+    // gestion du hash du password
+    private $passwordHasher;
+
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    {
+        $this->passwordHasher = $passwordHasher;
+    }
+
     public function load(ObjectManager $manager): void
     {
+
+        // création d'un admin 
+        $admin = new Users();
+        $admin->setLastName('gallais')
+            ->setFirstName('michel')
+            ->setAddress('chaussée d\'aelbeke')
+            ->setZipcode('7700')
+            ->setCity('Mouscron')
+            ->setCreatedAt(new DateTimeImmutable())
+            ->setEmail('michel@gmail.com')
+            ->setPassword($this->passwordHasher->hashPassword($admin,'password'))
+            ->setRoles(['ROLE_ADMIN']);
+
+        $manager->persist($admin);
+
+
         // DEBUT de la gestion des marque et model lier par id 
             $jsonobj = file_get_contents($filname = "public/resource/listeVoiture.json");
             $arr = json_decode($jsonobj, true);
@@ -43,6 +69,26 @@ class AppFixtures extends Fixture
             }
 
         // FIN de la gestion des marque et model lier par id 
+
+        // DEBUT de la gestion des options
+
+        $optjsonobj = file_get_contents($filname = "public/resource/equipement.json");
+
+        $arropt = json_decode($optjsonobj, true);
+
+        $tabopt= [];
+
+        foreach($arropt as $name) {
+            $equipements = $name["equipement"];
+            foreach($equipements as $equipement) {
+                $opt = new Equipement();
+                $opt->setName($equipement);
+                $manager->persist($opt);
+                $tabopt[] = $opt;
+            }
+        }
+
+    // FIN de la gestion des options
         
         // DEBUT de la gestion des transmission
         
@@ -104,7 +150,7 @@ class AppFixtures extends Fixture
      
         // DEBUT de la gestion d'une voiture en vente 
 
-        for ($i=0; $i < 5; $i++) { 
+        for ($c=0; $c < 5; $c++) { 
             $randModel = $tabModel[rand(0, count($tabModel)-1)];
             $date = new DateTimeImmutable();
             $cover = 'https://placehold.jp/250x250.png';
@@ -123,9 +169,13 @@ class AppFixtures extends Fixture
                 ->setDescription(
                     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit nisi a quod corporis, doloribus quam possimus quas nesciunt architecto ipsum.'
                 )
-                ->addImage($tabImage[rand(0,count($tabImage)-1)])
-                ->addImage($tabImage[rand(0,count($tabImage)-1)])
                 ->setCover($cover);
+                for ($i=0; $i <= rand(2,7); $i++) { 
+                    $car->addImage($tabImage[rand(0,count($tabImage)-1)]);
+                }
+                for ($e=0; $e <= rand(4,10); $e++) { 
+                    $car->addEquipement($tabopt[rand(0,count($tabopt)-1)]);
+                }
                 $manager->persist($car);
         }
                 

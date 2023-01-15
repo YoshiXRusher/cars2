@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une voiture{% endblock %}
+
+{% block body %}
+    <h1>Ajouter une voiture</h1>
+   
+<section class="container my-3">
+    <div class="row">
+        <div class="col">
+                <div class="container">
+                    <div>
+                        {{form_widget(form.kilometrage)}}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-lg mt-4">Création d'une annonce</button>
+        </div>
+    </div>
+</section>
+{% endblock %}

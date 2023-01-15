@@ -48,6 +48,9 @@
     flex-wrap: wrap;
 }
 
+.btn{
+    color: #f1f1f1;
+}
 .btn a{
     text-decoration: none;
     color: #f1f1f1;

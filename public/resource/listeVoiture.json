@@ -8,11 +8,11 @@
             },
             {
                 "annee": 2002,
-                "model" : "Acura RSX Type-S"
+                "model" : "RSX Type-S"
             },
             {
                 "annee": 2017,
-                "model" : "Acura NSX"
+                "model" : "NSX"
             }
         ]
     },
@@ -21,11 +21,11 @@
         "modeles" : [
             {
                 "annee": 2017,
-                "model" : "Alpine A110"
+                "model" : "A110"
             },
             {
                 "annee": 1973,
-                "model" : "Alpine A110 1600s"
+                "model" : "A110 1600s"
             }
         ]
     },
@@ -34,7 +34,7 @@
         "modeles" : [
             {
                 "annee": 2015,
-                "model" : "Alumi Craft Class 10 Race Car"
+                "model" : "Class 10 Race Car"
             }
         ]
     },
@@ -43,7 +43,7 @@
         "modeles" : [
             {
                 "annee": 1973,
-                "model" : " AMC Gremlin X"
+                "model" : " Gremlin X"
             }
         ]
     },
@@ -52,7 +52,7 @@
         "modeles" : [
             {
                 "annee": 2018,
-                "model" : "Apollo Intensa Emozione"
+                "model" : "Intensa Emozione"
             }
         ]
     },
@@ -61,11 +61,11 @@
         "modeles" : [
             {
                 "annee": 2013,
-                "model" : "Ariel Atom 500 V8"
+                "model" : "Atom 500 V8"
             },
             {
                 "annee": 2016,
-                "model" : "Ariel Nomad"
+                "model" : "Nomad"
             }
         ]
     },
@@ -74,35 +74,35 @@
         "modeles" : [
             {
                 "annee": 1964,
-                "model" : "Aston Martin DB5"
+                "model" : "DB5"
             },
             {
                 "annee": 2017,
-                "model" : "Aston Martin DB11"
+                "model" : "DB11"
             },
             {
                 "annee": 2019,
-                "model" : "Aston Martin DBS Superleggera"
+                "model" : "DBS Superleggera"
             },
             {
                 "annee": 2013,
-                "model" : "Aston Martin V12 Vantage S"
+                "model" : "V12 Vantage S"
             },
             {
                 "annee": 2019,
-                "model" : "Aston Martin Valhalla Concept"
+                "model" : "Valhalla Concept"
             },
             {
                 "annee": 2019,
-                "model" : "Aston Martin Vantage"
+                "model" : "Vantage"
             },
             {
                 "annee": 2016 ,
-                "model" : "Aston Martin Vantage GT12"
+                "model" : "Vantage GT12"
             },
             {
                 "annee": 2017,
-                "model" : "Aston Martin Vulcan AMR Pro"
+                "model" : "Vulcan AMR Pro"
             }
         ]
     },     
@@ -111,63 +111,63 @@
         "modeles" : [
             {
                 "annee": 2013,
-                "model" : " Audi R8 Coupé V10 plus 5.2 FSI quattro"
+                "model" : " R8 Coupé V10 plus 5.2 FSI quattro"
             },
             {
                 "annee": 2016,
-                "model" : "Audi R8 V10 plus"
+                "model" : "R8 V10 plus"
             },
             {
                 "annee": 1995,
-                "model" : "Audi RS 2 Avant"
+                "model" : "RS 2 Avant"
             },
             {
                 "annee": 2011,
-                "model" : "Audi RS 3 Sportback"
+                "model" : "RS 3 Sportback"
             },
             {
                 "annee": 2006,
-                "model" : "Audi RS 4"
+                "model" : "RS 4"
             },
             {
                 "annee": 2011,
-                "model" : "Audi RS 5 Coupé"
+                "model" : "RS 5 Coupé"
             },
             {
                 "annee": 2003,
-                "model" : "Audi RS 6"
+                "model" : "RS 6"
             },
             {
                 "annee": 2009,
-                "model" : "Audi RS 6"
+                "model" : "RS 6"
             },
             {
                 "annee": 2015,
-                "model" : "Audi RS 6 Avant"
+                "model" : "RS 6 Avant"
             },
             {
                 "annee": 2013,
-                "model" : "Audi RS 7 Sportback"
+                "model" : "RS 7 Sportback"
             },
             {
                 "annee": 2015,
-                "model" : "Audi S1"
+                "model" : "S1"
             },
             {
                 "annee": 1984,
-                "model" : "Audi Sport quattro"
+                "model" : "Sport quattro"
             },
             {
                 "annee": 2018,
-                "model" : "Audi TT RS"
+                "model" : "TT RS"
             },
             {
                 "annee": 2010,
-                "model" : "Audi TT RS Coupé"
+                "model" : "TT RS Coupé"
             },
             {
                 "annee": 2015,
-                "model" : "Audi TTS Coupé"
+                "model" : "TTS Coupé"
             }
         ]
     },
@@ -176,7 +176,7 @@
         "modeles" : [
             {
                 "annee": 1958,
-                "model" : "Austin Healey Sprite MkI"
+                "model" : "Sprite MkI"
             }
         ]
     }, 
@@ -185,7 +185,7 @@
         "modeles" : [
             {
                 "annee": 1939,
-                "model" : "Auto Union Type D"
+                "model" : "Type D"
             }
         ]
     },
@@ -194,7 +194,7 @@
         "modeles" : [
             {
                 "annee": 2014,
-                "model" : "BAC Mono"
+                "model" : "Mono"
             }
         ]
     },
@@ -203,19 +203,19 @@
         "modeles" : [
             {
                 "annee": 1931,
-                "model" : "Bentley Blower 4-1/2 Litre Supercharged"
+                "model" : "Blower 4-1/2 Litre Supercharged"
             },
             {
                 "annee": 1930,
-                "model" : "Bentley 8-Litre"
+                "model" : "8-Litre"
             },
             {
                 "annee": 2016,
-                "model" : "Bentley Bentayga"
+                "model" : "Bentayga"
             },
             {
                 "annee": 2017,
-                "model" : "Bentley Continental Supersports"
+                "model" : "Continental Supersports"
             }
         ]
     },
@@ -224,107 +224,107 @@
         "modeles" : [
             {
                 "annee": 2011,
-                "model" : "BMW 1 Series M Coupé"
+                "model" : "Series 1 M Coupé"
             },
             {
                 "annee": 1973,
-                "model" : "BMW 2002 Turbo"
+                "model" : "2002 Turbo"
             },
             {
                 "annee": 2015,
-                "model" : "BMW i8"
+                "model" : "i8"
             },
             {
                 "annee": 1957,
-                "model" : "BMW Isetta 300 Export"
+                "model" : "Isetta 300 Export"
             },
             {
                 "annee": 1981,
-                "model" : "BMW M1"
+                "model" : "M1"
             },
             {
                 "annee": 2016,
-                "model" : "BMW M2 Coupé"
+                "model" : "M2 Coupé"
             },
             {
                 "annee": 1991,
-                "model" : "BMW M3"
+                "model" : "M3"
             },
             {
                 "annee": 1997,
-                "model" : "BMW M3"
+                "model" : "M3"
             },
             {
                 "annee": 2005,
-                "model" : "BMW M3"
+                "model" : "M3"
             },
             {
                 "annee": 2008,
-                "model" : "BMW M3"
+                "model" : "M3"
             },
             {
                 "annee": 2002,
-                "model" : "BMW M3-GTR"
+                "model" : "M3-GTR"
             },
             {
                 "annee": 2014,
-                "model" : "BMW M4 Coupé"
+                "model" : "M4 Coupé"
             },
             {
                 "annee": 2016,
-                "model" : "BMW M4 GTS"
+                "model" : "M4 GTS"
             },
             {
                 "annee": 1988,
-                "model" : "BMW M5"
+                "model" : "M5"
             },
             {
                 "annee": 1995,
-                "model" : "BMW M5"
+                "model" : "M5"
             },
             {
                 "annee": 2003,
-                "model" : "BMW M5"
+                "model" : "M5"
             },
             {
                 "annee": 2009,
-                "model" : "BMW M5"
+                "model" : "M5"
             },
             {
                 "annee": 2012,
-                "model" : "BMW M5"
+                "model" : "M5"
             },
             {
                 "annee": 2018,
-                "model" : "BMW M5"
+                "model" : "M5"
             },
             {
                 "annee": 2013,
-                "model" : "BMW M6 Coupé"
+                "model" : "M6 Coupé"
             },
             {
                 "annee": 2011,
-                "model" : "BMW X5"
+                "model" : "X5"
             },
             {
                 "annee": 2011,
-                "model" : "BMW X5 M"
+                "model" : "X5 M"
             },
             {
                 "annee": 2015,
-                "model" : "BMW X6 M"
+                "model" : "X6 M"
             },
             {
                 "annee": 2002,
-                "model" : "BMW Z3 M Coupé"
+                "model" : "Z3 M Coupé"
             },
             {
                 "annee": 2019,
-                "model" : "BMW Z4 Roadster"
+                "model" : "Z4 Roadster"
             },
             {
                 "annee": 2008,
-                "model" : "BMW Z4 M Coupé"
+                "model" : "Z4 M Coupé"
             }
         ]
     },
@@ -358,7 +358,7 @@
         "modeles" : [
             {
                 "annee": 1958,
-                "model" : "Healey Sprite MkI"
+                "model" : "Sprite MkI"
             }
         ]
     },

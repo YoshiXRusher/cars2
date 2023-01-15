@@ -3,10 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Cars;
+use App\Form\AddcarType;
 use App\Repository\CarsRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ShowRoomController extends AbstractController
 {
@@ -36,6 +39,7 @@ class ShowRoomController extends AbstractController
         $transmi = $car->getIdTransmi();
         $img = $car->getImages();
         $boite = $car->getIdTypeDeBoite();
+        $opt = $car->getEquipements();
 
         return $this->render('showroom/info.html.twig', [
             'id' => $id,
@@ -51,6 +55,21 @@ class ShowRoomController extends AbstractController
             'transmi' => $transmi,
             'img' => $img,
             'boite' => $boite,
+            'opt' => $opt,
+        ]);
+    }
+
+    #[Route('/adm/addcar', name: 'addcar')]
+    #[IsGranted("ROLE_ADMIN")]
+    public function create(EntityManagerInterface $manager): Response
+    {
+        $car = new Cars();
+
+        $form = $this->createForm(AddcarType::class, $car);
+
+
+        return $this->render('addcar/addcar.html.twig', [
+            'myform' => $form->createView()
         ]);
     }
 }

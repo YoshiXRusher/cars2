@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{id}}{% endblock %}
+{% block title %}{{model.marque.name}} {{model.name}}{% endblock %}
 
 {% block body %}
     <div class="container full">
@@ -33,6 +33,7 @@
         <p>annee model : {{model.yearModele}}</p>
         <p>desc : {{desc}}</p>
         <p>price : {{price}}</p>
+        <p>KM : {{km}} km</p>
         <p>proprio : {{proprio}}</p>
         <p>cylidree : {{cylidree}}</p>
         <p>ch : {{ch}}</p>
@@ -40,6 +41,12 @@
         <p>carbu : {{carbu.type}}</p>
         <p>transmi : {{transmi.type}}</p>
         <p>boite : {{boite.type}}</p>
+            <h6>Equipements</h6>
+            <ul>
+        {% for equipement in opt %}
+                <li>{{equipement.name}}</li>
+        {% endfor %}
+            </ul>
         <div class="btn mt-4">
             <a href="{{path('showroom')}}">Retour au showroom</a>
         </div>
