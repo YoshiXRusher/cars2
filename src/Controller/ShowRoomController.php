@@ -71,7 +71,7 @@ class ShowRoomController extends AbstractController
         $form = $this->createForm(AddcarType::class, $car);
         $form->handleRequest($request);
         
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             // test pour ajouter les equipement (a revoir)
             // $equipements = $form->getData()->getEquipements();
             // for ($e=0; $e <= count($equipements); $e++) {
@@ -87,6 +87,7 @@ class ShowRoomController extends AbstractController
             $car->addImage($img);
             $manager->persist($car);
             $manager->flush();
+            return $this->redirectToRoute('info',['id'=>$car->getId()]);
         }
 
         return $this->render('addcar/addcar.html.twig', [

@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CarsRepository::class)]
 class Cars
@@ -38,6 +39,8 @@ class Cars
     private ?\DateTimeImmutable $year = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank(message:'La description ne peut pas etre vide')]
+    #[Assert\Length(min:10,minMessage:'La description doit faire au moin 10 caracteres')]
     private ?string $description = null;
 
     #[ORM\ManyToOne(inversedBy: 'cars')]
