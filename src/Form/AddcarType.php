@@ -39,9 +39,7 @@ class AddcarType extends AbstractType
             ->add('puissancekw',IntegerType::class,[
                 'attr' => ['class' => 'form-control']
             ])
-            ->add('year',DateType::class,[
-                'attr' => ['class' => 'form-control']
-            ])
+            ->add('year')
             ->add('description',TextareaType::class,[
                 'attr' => ['class' => 'form-control']
             ])
